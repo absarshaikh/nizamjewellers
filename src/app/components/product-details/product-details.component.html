@@ -1,0 +1,65 @@
+<section class="detail-page">
+
+  <!-- CATEGORY -->
+  <!-- <div class="category-bar">
+    <button
+      *ngFor="let cat of categories"
+      (click)="selectCategory(cat)"
+      [class.active]="selectedCategory === cat">
+      {{ cat }}
+    </button>
+  </div> -->
+
+  <!-- MAIN -->
+  <div class="detail-container mt-5">
+
+    <!-- IMAGE -->
+    <div class="image-box">
+      <img [src]="selectedProduct.image">
+    </div>
+
+    <!-- DETAILS -->
+    <div class="details-box">
+
+      <h2>{{ selectedProduct.name }}</h2>
+
+      <!-- COLOR -->
+      <div class="option">
+        <label>Color</label>
+        <div class="options">
+          <button *ngFor="let c of colors"
+            (click)="selectColor(c)"
+            [class.selected]="selectedColor === c">
+            {{ c }}
+          </button>
+        </div>
+      </div>
+
+      <!-- PURITY -->
+      <div class="option">
+        <label>Purity</label>
+        <div class="options">
+          <button *ngFor="let p of purity"
+            (click)="selectedPurity = p"
+            [class.selected]="selectedPurity === p">
+            {{ p }}
+          </button>
+        </div>
+      </div>
+
+      <!-- SIZE -->
+      <div class="option">
+        <label>Size</label>
+        <input [(ngModel)]="size" placeholder="Enter size">
+      </div>
+
+      <!-- CTA -->
+      <button class="cta" (click)="getQuote()">
+        Get Custom Price on WhatsApp
+      </button>
+
+    </div>
+
+  </div>
+
+</section>

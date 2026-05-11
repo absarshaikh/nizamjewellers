@@ -1,0 +1,88 @@
+<section class="relative h-screen w-full overflow-hidden">
+
+  <!-- Video -->
+  <video autoplay loop playsinline muted #videoRef
+    class="absolute w-full h-full object-cover">
+    <source src="assets/images/jewelry.mp4" type="video/mp4">
+  </video>
+
+  <!-- Blue Overlay instead of black -->
+  <div class="absolute inset-0 bg-[#0A192F]/80"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 flex flex-col justify-center items-center h-full text-center px-4">
+
+    <h1 class="text-4xl md:text-6xl font-bold text-gold NizamJw LgFonts">
+      Nizam Jewellers
+    </h1>
+
+    <p class="mt-4 text-textSecondary max-w-xl">
+      Crafted in our workshop. No showroom markup.
+    </p>
+
+    <div class="mt-6 flex gap-4">
+      <!-- <a href="https://wa.me/91XXXXXXXXXX"
+        class="bg-gold text-black px-6 py-3 rounded-lg font-semibold">
+        Chat on WhatsApp
+      </a> -->
+
+      <a routerLink="/custom-design"
+        class="border border-accentBlue text-accentBlue px-6 py-3 rounded-lg cta-btn">
+        Design Your Own
+      </a>
+    </div>
+
+    <div class="absolute bottom-10 text-textSecondary animate-bounce">
+      Scroll ↓
+    </div>
+
+  </div>
+</section>
+<section>
+    <div class="relative overflow-hidden py-10">
+
+  <div class="flex transition-transform duration-700"
+       [style.transform]="'translateX(-' + currentIndex * (100 / itemsPerView) + '%)'">
+
+    <div *ngFor="let img of images"
+         [style.minWidth.%]="100 / itemsPerView"
+         class="flex-shrink-0">
+
+      <div class="px-3">
+        <img [src]="img"
+             class="w-full h-[350px] object-cover rounded-xl shadow-lg" />
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <button (click)="prev()"
+    class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 px-3 py-2 rounded-full">
+    ‹
+  </button>
+
+  <button (click)="next()"
+    class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 px-3 py-2 rounded-full">
+    ›
+  </button>
+
+</div>
+</section>
+<section class="bg-navy py-16 px-6">
+
+  <h2 class="text-3xl text-center text-gold font-bold mb-10 NizamJw">
+    Our Products
+  </h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
+
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product">
+    </app-product-card>
+
+  </div>
+
+</section>

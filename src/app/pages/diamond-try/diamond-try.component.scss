@@ -1,0 +1,104 @@
+.try-page {
+  text-align: center;
+  color: white;
+  padding: 40px 20px;
+
+  background: radial-gradient(
+    circle at center,
+    #0a2540 0%,
+    #061a2f 40%,
+    #020c1b 100%
+  );
+}
+
+/* TITLE */
+.title {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* WRAPPER */
+.hand-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* HAND AREA */
+.hand-container {
+  position: relative;
+  width: 360px;
+}
+
+/* GLOW */
+.hand-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(212, 175, 55, 0.15),
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+/* HAND */
+.hand {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0px 25px 50px rgba(0, 0, 0, 0.6));
+}
+
+/* DIAMOND */
+.diamond {
+  position: absolute;
+  top: 26%;
+  left: 66%;
+
+  transform: translate(-50%, -50%) rotate(-10deg);
+  z-index: 2;
+
+  filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.5));
+  transition: width 0.2s ease;
+}
+
+/* SIZE */
+.size-info {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #D4AF37;
+  letter-spacing: 1px;
+}
+
+/* SLIDER */
+.slider {
+  width: 300px;
+  margin-top: 10px;
+}
+
+/* SHAPES */
+.shape-selector {
+  margin-top: 20px;
+}
+
+.shape-selector button {
+  margin: 0 6px;
+  padding: 8px 16px;
+  border: 1px solid #D4AF37;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.shape-selector button:hover,
+.shape-selector button.active {
+  background: #D4AF37;
+  color: black;
+}
