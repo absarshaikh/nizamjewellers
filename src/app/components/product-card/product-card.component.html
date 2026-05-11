@@ -1,0 +1,42 @@
+<div class="card-container">
+
+  <div class="card">
+
+    <!-- FRONT -->
+    <div class="card-face card-front">
+
+  <img [src]="product.image"
+       class="w-full h-full object-cover" />
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+  <!-- Title -->
+  <div class="absolute bottom-4 left-4 right-4">
+    <h3 class="text-white text-lg font-semibold">
+      {{ product.name }}
+    </h3>
+  </div>
+
+</div>
+
+    <!-- BACK -->
+    <div class="card-face card-back">
+      <h3 class="text-gold text-lg font-semibold">
+        {{ product.name }}
+      </h3>
+
+      <p class="text-textSecondary text-sm mt-2 text-center px-4">
+        {{ product.desc }}
+      </p>
+
+      <button
+        (click)="goToDetail($event)"
+        class="mt-4 bg-gold text-black px-5 py-2 rounded-lg">
+        Select Now
+      </button>
+    </div>
+
+  </div>
+
+</div>

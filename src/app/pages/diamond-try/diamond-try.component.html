@@ -1,0 +1,50 @@
+<section class="try-page">
+
+  <h2 class="title">See Diamond Size on Hand</h2>
+
+  <div class="hand-wrapper">
+
+    <div class="hand-container">
+
+      <!-- HAND -->
+      <img src="assets/images/hand.png" class="hand" />
+
+      <!-- DIAMOND -->
+      <img
+        [src]="diamondSrc"
+        class="diamond"
+        [style.width.px]="diamondPx"
+      />
+
+    </div>
+
+  </div>
+
+  <!-- SIZE INFO -->
+  <div class="size-info">
+    {{ size | number:'1.1-1' }} ct • {{ mm | number:'1.1-1' }} mm
+  </div>
+
+  <!-- SLIDER -->
+  <input
+    type="range"
+    min="0.2"
+    max="5"
+    step="0.1"
+    [(ngModel)]="size"
+    (input)="updateSize()"
+    class="slider"
+  />
+
+  <!-- SHAPE SELECT -->
+  <div class="shape-selector">
+    <button
+      *ngFor="let s of shapes"
+      [class.active]="shape === s"
+      (click)="setShape(s)"
+    >
+      {{ s }}
+    </button>
+  </div>
+
+</section>

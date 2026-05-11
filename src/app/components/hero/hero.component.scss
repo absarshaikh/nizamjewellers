@@ -1,0 +1,34 @@
+.carousel-item {
+  display: flex;
+}
+
+.carousel-item > * {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.cta-btn {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 12px 30px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* HOVER */
+.cta-btn:hover {
+  background: #D4AF37;   // gold
+  color: #000;
+  border-color: #D4AF37;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+.LgFonts{
+  font-size: 6.5em;
+}
+.h-screen{
+  height: 65vh;
+}

@@ -1,0 +1,55 @@
+<nav
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+  [ngClass]="isScrolled ? 'bg-[#0A192F]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'">
+
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- LOGO -->
+    <a routerLink="/" class="flex items-center gap-2">
+
+      <img src="assets/images/NJlogo.png" alt="NizamJewellers" class="h-10 w-auto">
+
+      <!-- <span class="text-gold font-semibold text-lg tracking-wide">
+        Nizam Jewellers
+      </span> -->
+
+    </a>
+
+    <!-- NAV LINKS -->
+    <div class="hidden md:flex items-center gap-8 text-sm">
+
+      <a routerLink="/" class="text-textSecondary hover:text-gold transition">
+        Home
+      </a>
+
+      <!-- <a routerLink="/catalog" class="text-textSecondary hover:text-gold transition">
+        Collections
+      </a> -->
+
+      <a routerLink="/custom-design" class="text-textSecondary hover:text-gold transition">
+        Custom Design
+      </a>
+
+      <a  class="text-textSecondary hover:text-gold transition" routerLink="/try-diamond">Try Diamond</a>
+
+      <a class="text-textSecondary hover:text-gold transition" routerLink="/about">About</a>
+
+      <a class="text-textSecondary hover:text-gold transition cursor-pointer">
+        Contact
+      </a>
+
+    </div>
+
+    <!-- CTA -->
+    <!-- <a href="https://wa.me/91XXXXXXXXXX"
+      class="hidden md:block bg-gold text-black px-5 py-2 rounded-lg font-semibold hover:scale-105 transition">
+      WhatsApp
+    </a> -->
+
+    <!-- MOBILE MENU ICON -->
+    <div class="md:hidden text-white text-2xl cursor-pointer">
+      ☰
+    </div>
+
+  </div>
+</nav>
