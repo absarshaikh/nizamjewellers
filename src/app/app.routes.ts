@@ -4,12 +4,14 @@ import { CustomDesignComponent } from './pages/custom-design/custom-design.compo
 import { ProductDetailComponent } from './components/product-details/product-details.component';
 import { DiamondTryComponent } from './pages/diamond-try/diamond-try.component';
 import { AboutComponent } from './pages/about-us/about-us.component';
+import { FaqComponent } from './faq/faq.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'custom-design', component: CustomDesignComponent },
   { path: 'product/:id', component: ProductDetailComponent },
     { path: 'try-diamond', component: DiamondTryComponent },
+     {path: 'faq',component: FaqComponent},
     { path: 'about', component: AboutComponent }
 
 

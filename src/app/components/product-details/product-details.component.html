@@ -1,21 +1,10 @@
 <section class="detail-page">
 
-  <!-- CATEGORY -->
-  <!-- <div class="category-bar">
-    <button
-      *ngFor="let cat of categories"
-      (click)="selectCategory(cat)"
-      [class.active]="selectedCategory === cat">
-      {{ cat }}
-    </button>
-  </div> -->
-
-  <!-- MAIN -->
   <div class="detail-container mt-5">
 
     <!-- IMAGE -->
     <div class="image-box">
-      <img [src]="selectedProduct.image">
+      <img [src]="selectedProduct.image" [alt]="selectedProduct.name">
     </div>
 
     <!-- DETAILS -->
@@ -26,8 +15,10 @@
       <!-- COLOR -->
       <div class="option">
         <label>Color</label>
+
         <div class="options">
-          <button *ngFor="let c of colors"
+          <button
+            *ngFor="let c of colors"
             (click)="selectColor(c)"
             [class.selected]="selectedColor === c">
             {{ c }}
@@ -35,22 +26,128 @@
         </div>
       </div>
 
+      <!-- RING SIZE -->
+    <!-- RING SIZE -->
+<div class="option ring-size-option">
+
+  <div class="label-row">
+    <label>Ring Size</label>
+
+    <button
+      type="button"
+      class="info-icon"
+      aria-label="View ring size guide"
+      (click)="openSizeGuide()">
+      <i class="fa-solid fa-circle-info"></i>
+    </button>
+  </div>
+
+  <div class="size-select-wrapper">
+    <select [(ngModel)]="size">
+      <option value="">Select Ring Size</option>
+
+      <option *ngFor="let s of ringSizes" [value]="s">
+        {{ s }}
+      </option>
+    </select>
+  </div>
+
+</div>
+
+<!-- DIAMOND TYPE -->
+<div class="option diamond-type-option">
+
+  <div class="label-row">
+    <label>Diamond Type</label>
+  </div>
+
+  <div class="options diamond-options">
+
+    <!-- LAB GROWN -->
+    <div class="diamond-option-item">
+
+      <button
+        type="button"
+        class="diamond-type-btn"
+        (click)="selectedDiamondType = 'Lab Grown'"
+        [class.selected]="selectedDiamondType === 'Lab Grown'">
+        Lab Grown
+      </button>
+
+      <span
+        class="info-icon"
+        title="Lab Grown Diamond"
+        (mouseenter)="showDiamondInfo('lab')"
+        (mouseleave)="hideDiamondInfo()">
+        <i class="fa-solid fa-circle-info"></i>
+      </span>
+
+    </div>
+
+
+    <!-- NATURAL DIAMOND -->
+    <div class="diamond-option-item">
+
+      <button
+        type="button"
+        class="diamond-type-btn"
+        (click)="selectedDiamondType = 'Natural Diamond'"
+        [class.selected]="selectedDiamondType === 'Natural Diamond'">
+        Natural Diamond
+      </button>
+
+      <span
+        class="info-icon"
+        title="Natural Diamond"
+        (mouseenter)="showDiamondInfo('natural')"
+        (mouseleave)="hideDiamondInfo()">
+        <i class="fa-solid fa-circle-info"></i>
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- INFO POPUP -->
+  <div
+    class="diamond-info-popup"
+    *ngIf="activeDiamondInfo">
+
+    <strong>
+      {{ activeDiamondInfo === 'lab'
+        ? 'Lab Grown Diamond'
+        : 'Natural Diamond'
+      }}
+    </strong>
+
+    <p *ngIf="activeDiamondInfo === 'lab'">
+      A diamond created in a controlled laboratory environment.
+      It has the same crystal structure and chemical composition
+      as a natural diamond.
+    </p>
+
+    <p *ngIf="activeDiamondInfo === 'natural'">
+      A diamond formed naturally deep within the Earth over
+      millions of years and then cut and polished for jewellery.
+    </p>
+
+  </div>
+
+</div>
+
       <!-- PURITY -->
       <div class="option">
         <label>Purity</label>
+
         <div class="options">
-          <button *ngFor="let p of purity"
+          <button
+            *ngFor="let p of purity"
             (click)="selectedPurity = p"
             [class.selected]="selectedPurity === p">
             {{ p }}
           </button>
         </div>
-      </div>
-
-      <!-- SIZE -->
-      <div class="option">
-        <label>Size</label>
-        <input [(ngModel)]="size" placeholder="Enter size">
       </div>
 
       <!-- CTA -->
@@ -63,3 +160,29 @@
   </div>
 
 </section>
+
+<!-- RING SIZE GUIDE MODAL -->
+<div
+  class="size-guide-modal"
+  *ngIf="showSizeGuide"
+  (click)="closeSizeGuide()">
+
+  <div
+    class="size-guide-content"
+    (click)="$event.stopPropagation()">
+
+    <button
+      type="button"
+      class="modal-close"
+      aria-label="Close"
+      (click)="closeSizeGuide()">
+      ×
+    </button>
+
+    <img
+      src="assets/images/ring-size-guide.png"
+      alt="Ring size guide">
+
+  </div>
+
+</div>
