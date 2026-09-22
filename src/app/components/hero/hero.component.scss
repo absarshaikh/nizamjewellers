@@ -32,3 +32,11 @@
 .h-screen{
   height: 65vh;
 }
+
+@media (max-width: 768px) {
+
+  .LgFonts{
+      font-size: 3em;
+}
+  
+}

@@ -1,57 +1,161 @@
 <nav
   class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
-  [ngClass]="isScrolled ? 'bg-[#0A192F]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'">
+  [ngClass]="isScrolled
+    ? 'bg-[#0A192F]/95 backdrop-blur-md shadow-lg'
+    : 'bg-transparent'">
 
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+  <!-- NAVBAR CONTAINER -->
+  <div
+    class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
     <!-- LOGO -->
-    <a routerLink="/" class="flex items-center gap-2">
+    <a
+      routerLink="/"
+      class="flex items-center gap-2 "
+      (click)="closeMobileMenu()">
 
-      <img src="assets/images/NJlogo.png" alt="NizamJewellers" class="h-10 w-auto">
-
-      <!-- <span class="text-gold font-semibold text-lg tracking-wide">
-        Nizam Jewellers
-      </span> -->
+      <img
+        src="assets/images/NJlogo.png"
+        alt="Nizam Jewellers"
+        class="h-10 w-auto">
 
     </a>
 
-    <!-- NAV LINKS -->
-    <div class="hidden md:flex items-center gap-8 text-sm">
 
-      <a routerLink="/" class="text-textSecondary hover:text-gold transition">
+    <!-- =========================
+         DESKTOP NAVIGATION
+    ========================== -->
+    <div
+      class="hidden md:flex items-center gap-10 ml-auto">
+
+      <a
+        routerLink="/"
+        class="nav-link">
         Home
       </a>
 
-      <!-- <a routerLink="/catalog" class="text-textSecondary hover:text-gold transition">
-        Collections
-      </a> -->
-
-      <a routerLink="/custom-design" class="text-textSecondary hover:text-gold transition">
+      <a
+        routerLink="/custom-design"
+        class="nav-link">
         Custom Design
       </a>
 
-      <a  class="text-textSecondary hover:text-gold transition" routerLink="/try-diamond">Try Diamond</a>
-      
-      <a  class="text-textSecondary hover:text-gold transition" routerLink="/faq">FAQ</a>
+      <a
+        routerLink="/try-diamond"
+        class="nav-link">
+        Try Diamond
+      </a>
 
-      <a class="text-textSecondary hover:text-gold transition" routerLink="/about">About</a>
+      <a
+        routerLink="/faq"
+        class="nav-link">
+        FAQ
+      </a>
 
-      <a class="text-textSecondary hover:text-gold transition cursor-pointer">
+      <a
+        routerLink="/about"
+        class="nav-link">
+        About
+      </a>
+
+      <a
+        href="#contact"
+        class="nav-link">
         Contact
       </a>
 
     </div>
 
-    <!-- CTA -->
-    <!-- <a href="https://wa.me/91XXXXXXXXXX"
-      class="hidden md:block bg-gold text-black px-5 py-2 rounded-lg font-semibold hover:scale-105 transition">
-      WhatsApp
-    </a> -->
 
-    <!-- MOBILE MENU ICON -->
-    <div class="md:hidden text-white text-2xl cursor-pointer">
-      ☰
+    <!-- =========================
+         MOBILE MENU BUTTON
+    ========================== -->
+    <button
+      type="button"
+      class="md:hidden text-white text-3xl leading-none"
+      (click)="toggleMobileMenu()"
+      aria-label="Toggle navigation menu">
+
+      <span *ngIf="!mobileMenuOpen">☰</span>
+      <span *ngIf="mobileMenuOpen">×</span>
+
+    </button>
+
+  </div>
+
+
+  <!-- =========================
+       MOBILE MENU
+  ========================== -->
+  <div
+    *ngIf="mobileMenuOpen"
+    class="md:hidden bg-[#0A192F]/98 backdrop-blur-md border-t border-white/10">
+
+    <div
+      class="px-6 py-5 flex flex-col gap-1">
+
+      <!-- HOME -->
+       <div class="p-2 border-bottom">
+         <a
+           routerLink="/"
+           (click)="closeMobileMenu()"
+           class="mobile-link">
+           Home
+         </a>
+       </div>
+
+      <!-- CUSTOM DESIGN -->
+       <div class="p-2 border-bottom">
+         <a
+           routerLink="/custom-design"
+           (click)="closeMobileMenu()"
+           class="mobile-link">
+           Custom Design
+         </a>
+       </div>
+
+      <!-- TRY DIAMOND -->
+       <div class="p-2 border-bottom">
+         <a
+           routerLink="/try-diamond"
+           (click)="closeMobileMenu()"
+           class="mobile-link">
+           Try Diamond
+         </a>
+       </div>
+
+      <!-- FAQ -->
+       <div class="p-2 border-bottom">        
+         <a
+           routerLink="/faq"
+           (click)="closeMobileMenu()"
+           class="mobile-link">
+           FAQ
+         </a>
+       </div>
+
+      <!-- ABOUT -->
+              <div class="p-2 border-bottom">
+                <a
+                  routerLink="/about"
+                  (click)="closeMobileMenu()"
+                  class="mobile-link">
+                  About
+                </a>
+              </div>
+
+      <!-- CONTACT -->
+              <div class="p-2 border-bottom">
+                <a
+                  href="#contact"
+                  (click)="closeMobileMenu()"
+                  class="mobile-link">
+                  Contact
+                </a>
+              </div>
+
     </div>
 
   </div>
+
 </nav>

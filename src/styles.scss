@@ -54,3 +54,87 @@ h1, h2, h3 {
 .logo {
   // font-family: 'Alex Brush', cursive;
 }
+
+/* ================================
+   GLOBAL TYPOGRAPHY
+================================ */
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+/* ================================
+   HEADINGS
+================================ */
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.25;
+}
+
+h4 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+h5 {
+  font-size: 1.1rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+
+/* ================================
+   PARAGRAPHS
+================================ */
+
+p {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  line-height: 1.7;
+}
+
+
+/* ================================
+   LINKS
+================================ */
+
+a {
+  font-size: 0.9375rem;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+button {
+  font-size: 0.875rem;
+}
+
+
+/* ================================
+   INPUTS
+================================ */
+
+input,
+select,
+textarea {
+  font-size: 0.875rem;
+}

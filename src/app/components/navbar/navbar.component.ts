@@ -16,4 +16,14 @@ export class NavbarComponent {
   onScroll() {
     this.isScrolled = window.scrollY > 50;
   }
+
+  mobileMenuOpen = false;
+
+toggleMobileMenu(): void {
+  this.mobileMenuOpen = !this.mobileMenuOpen;
+}
+
+closeMobileMenu(): void {
+  this.mobileMenuOpen = false;
+}
 }
