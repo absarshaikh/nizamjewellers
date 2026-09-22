@@ -113,3 +113,603 @@ input {
     grid-template-columns: 1fr;
   }
 }
+
+/* ================================
+   RING SIZE
+================================ */
+
+.ring-size-option {
+  position: relative;
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+
+  label {
+    margin: 0;
+  }
+}
+
+/* INFO ICON */
+
+.size-info-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.info-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid #d4af37;
+  background: transparent;
+  color: #d4af37;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: help;
+
+  transition: all 0.25s ease;
+}
+
+.info-icon:hover {
+  background: #d4af37;
+  color: #071a2f;
+  transform: scale(1.08);
+}
+
+/* ================================
+   SIZE GUIDE TOOLTIP
+================================ */
+
+.size-guide-tooltip {
+  position: absolute;
+
+  left: 32px;
+  top: -10px;
+
+  width: 360px;
+
+  padding: 10px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(212, 175, 55, 0.6);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(212, 175, 55, 0.12);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(8px) scale(0.96);
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease;
+
+  z-index: 100;
+}
+
+/* little arrow */
+
+.size-guide-tooltip::before {
+  content: "";
+
+  position: absolute;
+
+  left: -7px;
+  top: 17px;
+
+  width: 12px;
+  height: 12px;
+
+  background: #ffffff;
+
+  border-left: 1px solid rgba(212, 175, 55, 0.6);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.6);
+
+  transform: rotate(45deg);
+}
+
+.size-guide-tooltip img {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  border-radius: 7px;
+}
+
+/* SHOW ON HOVER */
+
+.size-info-wrapper:hover .size-guide-tooltip {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0) scale(1);
+}
+
+
+/* ================================
+   SIZE SELECT
+================================ */
+
+.size-select-wrapper {
+  position: relative;
+}
+
+.size-select-wrapper select {
+  width: 100%;
+
+  padding: 13px 42px 13px 15px;
+
+  border: 1px solid rgba(212, 175, 55, 0.45);
+
+  border-radius: 8px;
+
+  background: #071a2f;
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.size-select-wrapper select:hover,
+.size-select-wrapper select:focus {
+  border-color: #d4af37;
+
+  box-shadow:
+    0 0 0 3px rgba(212, 175, 55, 0.08);
+}
+
+.size-select-wrapper option {
+  background: #071a2f;
+  color: #ffffff;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .size-guide-tooltip {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    width: min(90vw, 360px);
+
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+
+  .size-guide-tooltip::before {
+    display: none;
+  }
+
+  .size-info-wrapper:hover .size-guide-tooltip {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ================================
+   RING SIZE LABEL
+================================ */
+
+.label-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+
+  label {
+    margin: 0;
+  }
+}
+
+
+/* ================================
+   INFO ICON
+================================ */
+
+.info-icon {
+  width: 20px;
+  height: 20px;
+
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 1px solid #d4af37;
+
+  background: transparent;
+  color: #d4af37;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.info-icon:hover {
+  background: #d4af37;
+  color: #071a2f;
+
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 12px rgba(212, 175, 55, 0.3);
+}
+
+
+/* ================================
+   RING SIZE SELECT
+================================ */
+
+.size-select-wrapper select {
+  width: 100%;
+
+  padding: 13px 15px;
+
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 8px;
+
+  background: #071a2f;
+  color: #fff;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.size-select-wrapper select:hover,
+.size-select-wrapper select:focus {
+  border-color: #d4af37;
+
+  box-shadow:
+    0 0 0 3px rgba(212, 175, 55, 0.08);
+}
+
+.size-select-wrapper option {
+  background: #071a2f;
+  color: #fff;
+}
+
+
+/* ================================
+   SIZE GUIDE MODAL
+================================ */
+
+.size-guide-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: rgba(0, 0, 0, 0.78);
+
+  backdrop-filter: blur(8px);
+
+  animation: modalFadeIn 0.25s ease;
+}
+
+
+/* ================================
+   MODAL CONTENT
+================================ */
+
+.size-guide-content {
+  position: relative;
+
+  width: min(90vw, 980px);
+  max-height: 90vh;
+
+  padding: 12px;
+
+  background: #fff;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 35px rgba(212, 175, 55, 0.12);
+
+  animation: modalScaleIn 0.25s ease;
+}
+
+.size-guide-content img {
+  width: 100%;
+  max-height: 85vh;
+
+  display: block;
+
+  object-fit: contain;
+
+  border-radius: 8px;
+}
+
+
+/* ================================
+   CLOSE BUTTON
+================================ */
+
+.modal-close {
+  position: absolute;
+
+  top: -16px;
+  right: -16px;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(212, 175, 55, 0.7);
+
+  background: #071a2f;
+  color: #d4af37;
+
+  font-size: 25px;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 2;
+
+  transition: all 0.25s ease;
+}
+
+.modal-close:hover {
+  background: #d4af37;
+  color: #071a2f;
+
+  transform: rotate(90deg);
+}
+
+
+/* ================================
+   ANIMATION
+================================ */
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .size-guide-modal {
+    padding: 20px;
+  }
+
+  .size-guide-content {
+    width: 95vw;
+    padding: 8px;
+  }
+
+  .modal-close {
+    top: -12px;
+    right: -8px;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 22px;
+  }
+}
+
+/* ================================
+   DIAMOND TYPE
+================================ */
+
+.diamond-type-option {
+  position: relative;
+}
+
+.diamond-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.diamond-option-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.diamond-type-btn {
+  padding: 10px 18px;
+
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 7px;
+
+  background: transparent;
+  color: #fff;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.diamond-type-btn:hover,
+.diamond-type-btn.selected {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #071a2f;
+}
+
+
+/* ================================
+   INFO ICON
+================================ */
+
+.info-icon {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #d4af37;
+
+  cursor: help;
+
+  transition: all 0.25s ease;
+}
+
+.info-icon i {
+  font-size: 16px;
+}
+
+.info-icon:hover {
+  color: #fff;
+
+  transform: scale(1.12);
+}
+
+
+/* ================================
+   INFO POPUP
+================================ */
+
+.diamond-info-popup {
+  position: absolute;
+
+  left: 0;
+  top: calc(100% + 12px);
+
+  width: 320px;
+
+  padding: 18px;
+
+  background: #071a2f;
+
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 10px;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(212, 175, 55, 0.08);
+
+  z-index: 100;
+
+  animation: diamondInfoIn 0.2s ease;
+}
+
+.diamond-info-popup strong {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #d4af37;
+
+  font-family: 'Playfair Display', serif;
+
+  font-size: 15px;
+}
+
+.diamond-info-popup p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+@keyframes diamondInfoIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+  .diamond-info-popup {
+    width: 280px;
+  }
+
+}

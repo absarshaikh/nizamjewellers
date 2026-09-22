@@ -1,0 +1,115 @@
+<section class="faq-page">
+
+  <!-- HERO -->
+  <div class="faq-hero">
+
+    <span class="eyebrow">
+      NIZAM JEWELLERS
+    </span>
+
+    <h1>
+      Frequently Asked Questions
+    </h1>
+
+    <p>
+      Everything you need to know about our jewellery,
+      diamonds, custom designs, pricing and delivery.
+    </p>
+
+  </div>
+
+
+  <!-- SEARCH -->
+  <div class="faq-search">
+
+    <span class="search-icon">⌕</span>
+
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Search your question..."
+    />
+
+  </div>
+
+
+  <!-- FAQ LIST -->
+  <div class="faq-container">
+
+    <div
+      class="faq-item"
+      *ngFor="let faq of filteredFaqs; let i = index"
+      [class.open]="activeIndex === i"
+    >
+
+      <button
+        class="faq-question"
+        type="button"
+        (click)="toggleFaq(i)"
+      >
+
+        <span>
+          {{ faq.question }}
+        </span>
+
+        <span class="faq-icon">
+          {{ activeIndex === i ? '−' : '+' }}
+        </span>
+
+      </button>
+
+
+      <div
+        class="faq-answer"
+        *ngIf="activeIndex === i"
+      >
+
+        <p>
+          {{ faq.answer }}
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- NO RESULTS -->
+    <div
+      class="no-results"
+      *ngIf="filteredFaqs.length === 0"
+    >
+
+      <h3>No questions found</h3>
+
+      <p>
+        Try searching with a different keyword.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- CONTACT CTA -->
+  <div class="faq-cta">
+
+    <span class="cta-eyebrow">
+      STILL HAVE QUESTIONS?
+    </span>
+
+    <h2>
+      Let's Talk About Your Jewellery
+    </h2>
+
+    <p>
+      Have a specific requirement or a custom design in mind?
+      Our team is here to help.
+    </p>
+
+    <button class="cta-button">
+      Get in Touch
+    </button>
+
+  </div>
+
+</section>

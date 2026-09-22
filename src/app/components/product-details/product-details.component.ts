@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-product-detail',
@@ -10,8 +11,36 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss'], // 👈 NO MORE MISSING CSS
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnDestroy { 
   productId: any;
+  ringSizes = [
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+  '13',
+  '14',
+  '15',
+  '16',
+  '17',
+  '18',
+  '19',
+  '20',
+  '21',
+  '22',
+  '23',
+  '24',
+  '25',
+  '26',
+  '27',
+  '28',
+  '29',
+  '30'
+];
+size = '';
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -26,11 +55,10 @@ export class ProductDetailComponent {
   selectedCategory = 'Ring';
 
   colors = ['Yellow Gold', 'White Gold', 'Rose Gold'];
-  purity = ['14K', '18K', '22K'];
+  purity = ['9K', '14K', '18K'];
 
   selectedColor = 'Yellow Gold';
   selectedPurity = '18K';
-  size = '';
 
   selectedProduct = {
     name: 'Elegant Ring',
@@ -116,7 +144,36 @@ Image: ${imageUrl}
   };
 
   loadProduct(id: any) {
-    this.selectedProduct = this.products[id];
-    this.productId= id 
+    this.productId = id;
+    this.selectedProduct = this.products[id] ?? this.selectedProduct;
   }
+
+  ngOnDestroy(): void {
+  document.body.style.overflow = '';
+}
+
+showSizeGuide = false;
+
+openSizeGuide(): void {
+  this.showSizeGuide = true;
+  document.body.style.overflow = 'hidden';
+}
+
+closeSizeGuide(): void {
+  this.showSizeGuide = false;
+  document.body.style.overflow = '';
+}
+
+selectedDiamondType = 'Natural Diamond';
+
+activeDiamondInfo: 'lab' | 'natural' | null = null;
+
+showDiamondInfo(type: 'lab' | 'natural'): void {
+  this.activeDiamondInfo = type;
+}
+
+hideDiamondInfo(): void {
+  this.activeDiamondInfo = null;
+}
+  
 }

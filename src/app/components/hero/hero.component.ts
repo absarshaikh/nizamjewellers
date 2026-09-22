@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ProductCardComponent } from '../product-card/product-card.component';
 
 declare var bootstrap: any;
@@ -8,7 +9,7 @@ declare var bootstrap: any;
   standalone: true,
  templateUrl: './hero.component.html',
  styleUrls: ['./hero.component.scss'],
- imports: [CommonModule,ProductCardComponent]
+ imports: [CommonModule, RouterLink, ProductCardComponent]
 })
 
 export class HeroComponent {
