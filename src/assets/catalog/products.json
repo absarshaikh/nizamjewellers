@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "generatedAt": "2026-03-21T00:00:00.000Z",
+  "categories": [
+    {
+      "id": "ring",
+      "name": "Elegant Ring",
+      "desc": "Diamond-studded premium ring",
+      "image": "assets/images/product/ring.jpg"
+    },
+    {
+      "id": "bracelet",
+      "name": "Luxury Bracelet",
+      "desc": "Modern gold bracelet design",
+      "image": "assets/images/product/bracelet.jpg"
+    },
+    {
+      "id": "locket",
+      "name": "Classic Locket",
+      "desc": "Timeless gold locket piece",
+      "image": "assets/images/product/locket.jpg"
+    },
+    {
+      "id": "bangle",
+      "name": "Designer Bangle",
+      "desc": "Traditional meets modern style",
+      "image": "assets/images/product/bangle.jpg"
+    },
+    {
+      "id": "chain",
+      "name": "Gold Chain",
+      "desc": "Minimal and elegant chain",
+      "image": "assets/images/product/chain.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": "ring-classic",
+      "categoryId": "ring",
+      "name": "Classic Solitaire Ring",
+      "desc": "Timeless solitaire with brilliant centre stone.",
+      "image": "assets/images/product/ring.jpg",
+      "tag": "Bestseller",
+      "metals": {
+        "gold": "assets/images/product/ring-gold.png",
+        "wtgold": "assets/images/product/ring-wtgold.png",
+        "rsgold": "assets/images/product/ring-rsgold.png"
+      }
+    },
+    {
+      "id": "ring-halo",
+      "categoryId": "ring",
+      "name": "Halo Diamond Ring",
+      "desc": "Micro-set halo for extra sparkle and presence.",
+      "image": "assets/images/product/ring.jpg",
+      "metals": {
+        "gold": "assets/images/product/ring-gold.png",
+        "wtgold": "assets/images/product/ring-wtgold.png",
+        "rsgold": "assets/images/product/ring-rsgold.png"
+      }
+    }
+  ]
+}

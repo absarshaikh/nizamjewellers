@@ -15,22 +15,22 @@
 
 /* BRAND */
 .brand-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 34px;
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
   color: #ffffff;
 }
 
 .tagline {
-  font-size: 18px;
-  color: #D4AF37;
+  font-size: var(--text-lg);
+  color: #d4af37;
   margin-bottom: 20px;
+  font-weight: 500;
 }
 
-/* TEXT */
 .about-text p {
   margin-bottom: 15px;
-  line-height: 1.8;
-  font-size: 15px;
+  line-height: var(--leading-relaxed);
+  font-size: var(--text-base);
 }
 
 /* HIGHLIGHT */

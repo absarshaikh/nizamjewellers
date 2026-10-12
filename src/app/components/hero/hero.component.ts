@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, OnInit, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProductCardComponent } from '../product-card/product-card.component';
+import { PRODUCT_CATEGORIES } from '../../data/products.data';
 
 declare var bootstrap: any;
 @Component({
@@ -12,11 +13,18 @@ declare var bootstrap: any;
  imports: [CommonModule, RouterLink, ProductCardComponent]
 })
 
-export class HeroComponent {
+export class HeroComponent implements OnInit, AfterViewInit {
+  @ViewChild('videoRef') videoRef!: ElementRef<HTMLVideoElement>;
 
-   @ViewChild('videoRef') videoRef!: ElementRef<HTMLVideoElement>;
+  products = PRODUCT_CATEGORIES;
 
-  ngAfterViewInit() {
+  ngOnInit(): void {
+    this.updateView();
+    window.addEventListener('resize', () => this.updateView());
+    setInterval(() => this.next(), 3000);
+  }
+
+  ngAfterViewInit(): void {
     const video = this.videoRef.nativeElement;
 
     video.muted = true;
@@ -53,14 +61,7 @@ export class HeroComponent {
 ];
 
 currentIndex = 0;
-slideWidth = 25; // 4 images = 25% each
-
 itemsPerView = 4;
-
-//  slideWidth() {
-//   return 100 / this.itemsPerView;
-// }
-
 
 next() {
   if (this.currentIndex < this.images.length - this.itemsPerView) {
@@ -78,60 +79,21 @@ prev() {
   }
 }
 
-
-
-
-
-ngOnInit() {
-  this.updateView();
-
-  window.addEventListener('resize', () => this.updateView());
-
-  setInterval(() => this.next(), 3000);
-}
-
 updateView() {
   if (window.innerWidth < 640) {
-    this.slideWidth = 100; // 1 image
+    this.itemsPerView = 1;
   } else if (window.innerWidth < 1024) {
-    this.slideWidth = 50; // 2 images
+    this.itemsPerView = 2;
   } else {
-    this.slideWidth = 25; // 4 images
+    this.itemsPerView = 4;
+  }
+
+  const maxIndex = Math.max(0, this.images.length - this.itemsPerView);
+  if (this.currentIndex > maxIndex) {
+    this.currentIndex = maxIndex;
   }
 }
 
 //product
 
-products = [
-  {
-    id: 'ring',
-    name: 'Elegant Ring',
-    desc: 'Diamond-studded premium ring',
-    image: 'assets/images/product/ring.jpg'
-  },
-  {
-    id: 'bracelet',
-    name: 'Luxury Bracelet',
-    desc: 'Modern gold bracelet design',
-    image: 'assets/images/product/bracelet.jpg'
-  },
-  {
-    id: 'locket', 
-    name: 'Classic Locket',
-    desc: 'Timeless gold locket piece',
-    image: 'assets/images/product/locket.jpg'
-  },
-  {
-    id: 'bangle', 
-    name: 'Designer Bangle',
-    desc: 'Traditional meets modern style',
-    image: 'assets/images/product/bangle.jpg'
-  },
-  {
-    id: 'chain',
-    name: 'Gold Chain',
-    desc: 'Minimal and elegant chain',
-    image: 'assets/images/product/chain.jpg'
-  }
-];
 }

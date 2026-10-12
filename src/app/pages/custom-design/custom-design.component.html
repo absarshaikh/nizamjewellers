@@ -1,1 +1,202 @@
-<p>custom-design works!</p>
+<section class="custom-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a routerLink="/">Home</a>
+    <span aria-hidden="true">/</span>
+    <span>Custom design</span>
+  </nav>
+
+  <header class="custom-hero">
+    <p class="type-eyebrow">Bespoke</p>
+    <h1 class="type-page-title">Design your own jewellery</h1>
+    <p class="type-lead">
+      Share your idea — metal, stones, and occasion — and our team will reply on WhatsApp with options and a quote.
+    </p>
+  </header>
+
+  <div class="custom-layout">
+    <form class="custom-form" (ngSubmit)="submit()" novalidate>
+      <p class="form-error" *ngIf="formError" role="alert">{{ formError }}</p>
+      <p class="form-success" *ngIf="submitted && !formError" role="status">
+        WhatsApp should open in a new tab. If you chose a reference image, attach it in the chat.
+      </p>
+
+      <fieldset class="form-section">
+        <legend>Your details</legend>
+        <div class="field-grid">
+          <label class="field">
+            <span class="field-label">Full name <em>*</em></span>
+            <input
+              type="text"
+              name="fullName"
+              [(ngModel)]="form.fullName"
+              autocomplete="name"
+              placeholder="e.g. Priya Sharma"
+              required
+            />
+          </label>
+          <label class="field">
+            <span class="field-label">WhatsApp / mobile <em>*</em></span>
+            <input
+              type="tel"
+              name="phone"
+              [(ngModel)]="form.phone"
+              autocomplete="tel"
+              inputmode="numeric"
+              placeholder="10-digit number"
+              required
+            />
+          </label>
+          <label class="field field--full">
+            <span class="field-label">Email <span class="optional">(optional)</span></span>
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="form.email"
+              autocomplete="email"
+              placeholder="For sketches or invoices"
+            />
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>What are we making?</legend>
+        <p class="field-label">Piece type <em>*</em></p>
+        <div class="chip-row" role="group" aria-label="Piece type">
+          <button
+            type="button"
+            class="chip"
+            *ngFor="let piece of pieceTypes"
+            [class.active]="form.pieceType === piece"
+            (click)="selectChip('pieceType', piece)"
+          >
+            {{ piece }}
+          </button>
+        </div>
+
+        <p class="field-label">Metal</p>
+        <div class="chip-row" role="group" aria-label="Metal">
+          <button
+            type="button"
+            class="chip"
+            *ngFor="let m of metals"
+            [class.active]="form.metal === m"
+            (click)="selectChip('metal', m)"
+          >
+            {{ m }}
+          </button>
+        </div>
+
+        <p class="field-label">Purity</p>
+        <div class="chip-row" role="group" aria-label="Purity">
+          <button
+            type="button"
+            class="chip"
+            *ngFor="let p of purities"
+            [class.active]="form.purity === p"
+            (click)="selectChip('purity', p)"
+          >
+            {{ p }}
+          </button>
+        </div>
+
+        <p class="field-label">Stone</p>
+        <div class="chip-row" role="group" aria-label="Diamond type">
+          <button
+            type="button"
+            class="chip"
+            *ngFor="let d of diamondTypes"
+            [class.active]="form.diamondType === d"
+            (click)="selectChip('diamondType', d)"
+          >
+            {{ d }}
+          </button>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>Budget &amp; timing</legend>
+        <div class="field-grid">
+          <label class="field">
+            <span class="field-label">Budget range</span>
+            <select name="budget" [(ngModel)]="form.budget">
+              <option value="">Select a range</option>
+              <option *ngFor="let b of budgets" [value]="b">{{ b }}</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">Occasion</span>
+            <select name="occasion" [(ngModel)]="form.occasion">
+              <option value="">Select occasion</option>
+              <option *ngFor="let o of occasions" [value]="o">{{ o }}</option>
+            </select>
+          </label>
+          <label class="field field--full">
+            <span class="field-label">When do you need it?</span>
+            <select name="timeline" [(ngModel)]="form.timeline">
+              <option *ngFor="let t of timelines" [value]="t">{{ t }}</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>Design brief</legend>
+        <label class="field">
+          <span class="field-label">Ring size / dimensions <span class="optional">(if known)</span></span>
+          <input
+            type="text"
+            name="sizeNotes"
+            [(ngModel)]="form.sizeNotes"
+            placeholder="e.g. Ring size 12, 16&quot; chain"
+          />
+        </label>
+
+        <label class="field">
+          <span class="field-label">Describe your design <em>*</em></span>
+          <textarea
+            name="description"
+            [(ngModel)]="form.description"
+            rows="5"
+            placeholder="Style, inspiration, stones, engraving, or a link to a reference photo…"
+            required
+          ></textarea>
+        </label>
+
+        <div class="field file-field">
+          <span class="field-label">Reference image <span class="optional">(optional)</span></span>
+          <label class="file-drop">
+            <input
+              type="file"
+              accept="image/*,.pdf"
+              (change)="onReferenceSelected($event)"
+            />
+            <span class="file-drop-text">
+              <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+              {{ form.referenceFileName || 'Upload sketch or photo' }}
+            </span>
+          </label>
+          <p class="field-hint">File name is sent in the message; attach the image in WhatsApp after it opens.</p>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="submit-btn">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        Send request on WhatsApp
+      </button>
+    </form>
+
+    <aside class="custom-aside" aria-label="How it works">
+      <h2>How it works</h2>
+      <ol>
+        <li>Fill in your preferences and design notes.</li>
+        <li>We open WhatsApp with a summary you can edit.</li>
+        <li>Our team shares metal options, timeline, and a quote.</li>
+        <li>Visit the workshop or confirm details remotely.</li>
+      </ol>
+      <div class="aside-note">
+        <p>GIA-certified diamonds · In-house craftsmanship · Secure delivery available.</p>
+      </div>
+    </aside>
+  </div>
+</section>

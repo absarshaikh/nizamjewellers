@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nizamjewellers.vercel.app/sitemap.xml

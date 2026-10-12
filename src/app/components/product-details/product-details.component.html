@@ -1,5 +1,13 @@
 <section class="detail-page">
 
+  <nav class="detail-breadcrumb" aria-label="Breadcrumb">
+    <a routerLink="/">Home</a>
+    <span>/</span>
+    <a [routerLink]="['/products']" [queryParams]="{ category: categoryId }">{{ categoryLabel }}</a>
+    <span>/</span>
+    <span>{{ selectedProduct.name }}</span>
+  </nav>
+
   <div class="detail-container mt-5">
 
     <!-- IMAGE -->
@@ -98,7 +106,7 @@
 
       <span
         class="info-icon"
-        title="Natural Diamond"
+        title="Diamond"
         (mouseenter)="showDiamondInfo('natural')"
         (mouseleave)="hideDiamondInfo()">
         <i class="fa-solid fa-circle-info"></i>
@@ -129,7 +137,7 @@
 
     <p *ngIf="activeDiamondInfo === 'natural'">
       A diamond formed naturally deep within the Earth over
-      millions of years and then cut and polished for jewellery.
+      millions of years and then mined , cut and polished for jewellery.
     </p>
 
   </div>
