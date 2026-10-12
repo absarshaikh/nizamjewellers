@@ -14,7 +14,9 @@ export class ProductCardComponent {
   constructor(private router: Router) {}
 
   goToDetail(event: Event) {
-  event.stopPropagation();
-    this.router.navigate(['/product', this.product.id]);
+    event.stopPropagation();
+    this.router.navigate(['/products'], {
+      queryParams: { category: this.product.id },
+    });
   }
 }

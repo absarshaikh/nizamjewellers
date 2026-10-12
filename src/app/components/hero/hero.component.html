@@ -1,45 +1,48 @@
-<section class="relative h-screen w-full overflow-hidden">
+<section class="hero-banner" aria-label="Welcome">
 
-  <!-- Video -->
-  <video autoplay loop playsinline muted #videoRef
-    class="absolute w-full h-full object-cover">
-    <source src="assets/images/jewelry.mp4" type="video/mp4">
-  </video>
+  <div class="hero-media">
+    <video
+      autoplay
+      loop
+      playsinline
+      muted
+      #videoRef
+      class="hero-video"
+    >
+      <source src="assets/images/jewelry.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+  </div>
 
-  <!-- Blue Overlay instead of black -->
-  <div class="absolute inset-0 bg-[#0A192F]/80"></div>
+  <div class="hero-content">
+    <p class="type-eyebrow hero-eyebrow">Mumbai · Workshop to you</p>
 
-  <!-- Content -->
-  <div class="relative z-10 flex flex-col justify-center items-center h-full text-center px-4">
-
-    <h1 class="text-4xl md:text-6xl font-bold text-gold NizamJw LgFonts">
+    <h1 class="NizamJw text-hero text-gold hero-title">
       Nizam Jewellers
     </h1>
 
-    <p class="mt-4 text-textSecondary max-w-xl">
+    <p class="type-lead hero-tagline">
       Crafted in our workshop. No showroom markup.
     </p>
 
-    <div class="mt-6 flex gap-4">
-      <!-- <a href="https://wa.me/91XXXXXXXXXX"
-        class="bg-gold text-black px-6 py-3 rounded-lg font-semibold">
-        Chat on WhatsApp
-      </a> -->
-
-      <a routerLink="/custom-design"
-        class="border border-accentBlue text-accentBlue px-6 py-3 rounded-lg cta-btn">
-        Design Your Own
+    <div class="hero-actions">
+      <a routerLink="/products" class="hero-btn hero-btn--primary">
+        Browse collections
+      </a>
+      <a routerLink="/try-diamond" class="hero-btn hero-btn--ghost">
+        Try diamond size
+      </a>
+      <a routerLink="/custom-design" class="hero-btn hero-btn--ghost">
+        Design your own
       </a>
     </div>
-
-    <div class="absolute bottom-10 text-textSecondary animate-bounce">
-      Scroll ↓
-    </div>
-
   </div>
+
+  <span class="hero-scroll-hint type-caption" aria-hidden="true">Scroll</span>
 </section>
-<section>
-    <div class="relative overflow-hidden py-10">
+
+<section class="hero-gallery">
+    <div class="hero-gallery-inner relative overflow-hidden">
 
   <div class="flex transition-transform duration-700"
        [style.transform]="'translateX(-' + currentIndex * (100 / itemsPerView) + '%)'">
@@ -50,7 +53,7 @@
 
       <div class="px-3">
         <img [src]="img"
-             class="w-full h-[350px] object-cover rounded-xl shadow-lg" />
+             class="gallery-slide-img" alt="" />
       </div>
 
     </div>
@@ -70,11 +73,20 @@
 
 </div>
 </section>
-<section class="bg-navy py-16 px-6">
+<section class="products-section bg-navy py-12 md:py-16 px-4 sm:px-6">
 
-  <h2 class="text-3xl text-center text-gold font-bold mb-10 NizamJw">
-    Our Products
-  </h2>
+  <div class="max-w-7xl mx-auto text-center mb-8 md:mb-10">
+    <p class="type-eyebrow mb-2">Collections</p>
+    <h2 class="type-page-title">Our Products</h2>
+    <p class="type-lead mt-3 max-w-lg mx-auto">
+      Choose a category to browse designs, then customise your piece on the detail page.
+    </p>
+    <a
+      routerLink="/products"
+      class="inline-block mt-4 type-body-sm font-semibold text-gold hover:underline">
+      View full catalogue →
+    </a>
+  </div>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
 

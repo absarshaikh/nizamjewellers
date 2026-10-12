@@ -1,0 +1,61 @@
+<section class="catalog-page">
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a routerLink="/">Home</a>
+    <span aria-hidden="true">/</span>
+    <span>Products</span>
+  </nav>
+
+  <header class="catalog-hero">
+    <p class="type-eyebrow">Collections</p>
+    <h1 class="type-page-title">Our Products</h1>
+    <p class="type-lead">
+      Browse designs by category, then customise metal, purity, diamond type, and size on the detail page.
+    </p>
+  </header>
+
+  <div class="filter-row" role="tablist" aria-label="Product categories">
+    <button
+      type="button"
+      *ngFor="let filter of filters"
+      class="filter-chip"
+      [class.active]="activeCategory === filter.id"
+      (click)="selectCategory(filter.id)"
+    >
+      {{ filter.label }}
+    </button>
+  </div>
+
+  <p class="results-meta">
+    Showing <strong>{{ filteredProducts.length }}</strong>
+    {{ categoryHeading }} design{{ filteredProducts.length === 1 ? '' : 's' }}
+  </p>
+
+  <div class="catalog-grid" *ngIf="filteredProducts.length; else emptyState">
+    <article class="catalog-card" *ngFor="let item of filteredProducts">
+      <a [routerLink]="['/product', item.id]" class="catalog-card-link">
+        <div class="catalog-image">
+          <img [src]="item.image" [alt]="item.name" loading="lazy" />
+          <span class="catalog-tag" *ngIf="item.tag">{{ item.tag }}</span>
+        </div>
+
+        <div class="catalog-body">
+          <p class="catalog-category">{{ getCategoryLabel(item.categoryId) }}</p>
+          <h2>{{ item.name }}</h2>
+          <p class="catalog-desc">{{ item.desc }}</p>
+          <span class="catalog-cta">View &amp; customise →</span>
+        </div>
+      </a>
+    </article>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <p>No designs in this category yet.</p>
+      <button type="button" class="filter-chip active" (click)="selectCategory('all')">
+        View all products
+      </button>
+    </div>
+  </ng-template>
+
+</section>

@@ -1,50 +1,197 @@
 <section class="try-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a routerLink="/">Home</a>
+    <span aria-hidden="true">/</span>
+    <span>Diamond size</span>
+  </nav>
 
-  <h2 class="title">See Diamond Size on Hand</h2>
+  <header class="page-header">
+    <p class="type-eyebrow">Round brilliant</p>
+    <h1 class="title" *ngIf="step === 'calibrate'">Screen calibration</h1>
+    <h1 class="title" *ngIf="step === 'try-on'">Diamond weight &amp; size</h1>
+    <p class="subtitle" *ngIf="step === 'calibrate'">
+      Match your debit/credit card to the outline so stones render at <strong>true millimetre scale</strong>
+      on your display — like a jeweller’s size chart.
+    </p>
+    <p class="subtitle calibrated" *ngIf="step === 'try-on'">
+      Sizes below follow standard round diamond diameter charts. On-hand preview is calibrated to your screen.
+      <button type="button" class="link-btn" (click)="openCalibration()">Recalibrate card</button>
+    </p>
+  </header>
 
-  <div class="hand-wrapper">
-
-    <div class="hand-container">
-
-      <!-- HAND -->
-      <img src="assets/images/hand.png" class="hand" />
-
-      <!-- DIAMOND -->
-      <img
-        [src]="diamondSrc"
-        class="diamond"
-        [style.width.px]="diamondPx"
-      />
-
+  <!-- Calibration -->
+  <div class="panel panel--calibrate" *ngIf="step === 'calibrate'">
+    <div class="panel-head">
+      <h2>Round diamond calibration</h2>
+      <p>Hold card <strong>vertical</strong> · ISO 85.6 × 54 mm</p>
     </div>
-
+    <div class="calibrate-body">
+      <div class="card-column">
+        <div
+          #cardOutline
+          class="card-outline card-outline--vertical"
+          [style.width]="cardWidthMm + 'mm'"
+          [style.height]="cardHeightMm + 'mm'"
+        >
+          <span class="card-label">Your card</span>
+          <span class="card-dim">{{ cardWidthMm | number:'1.0-1' }} × {{ cardHeightMm | number:'1.0-1' }} mm</span>
+        </div>
+        <p class="card-hint">Short edge across · long edge vertical</p>
+      </div>
+      <div class="calibrate-copy">
+        <p class="calibration-tip">
+          Set browser zoom to <strong>100%</strong> (Ctrl+0). Adjust the slider until the outline matches your card edge to edge.
+        </p>
+        <div class="slider-block">
+          <label class="slider-label" for="card-scale-slider">Match card to outline</label>
+          <input
+            id="card-scale-slider"
+            type="range"
+            [min]="cardScaleMin"
+            [max]="cardScaleMax"
+            step="0.01"
+            [(ngModel)]="cardScale"
+            (input)="onCardScaleChange()"
+            class="slider"
+          />
+          <p class="scale-readout" *ngIf="measuredCardPx > 0">
+            Scale {{ cardScale * 100 | number:'1.0-0' }}% · {{ measuredCardPx | number:'1.0-0' }} px
+          </p>
+        </div>
+        <button type="button" class="btn-primary" (click)="confirmCalibration()">
+          Start size preview
+        </button>
+      </div>
+    </div>
   </div>
 
-  <!-- SIZE INFO -->
-  <div class="size-info">
-    {{ size | number:'1.1-1' }} ct • {{ mm | number:'1.1-1' }} mm
+  <!-- Try-on studio -->
+  <div class="try-studio" *ngIf="step === 'try-on'">
+    <aside class="chart-panel" aria-label="Round diamond size chart">
+      <div class="chart-panel__head">
+        <h2>Size chart</h2>
+        <span>MM · carat</span>
+      </div>
+      <div class="chart-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>MM size</th>
+              <th>Carat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let row of sizeChartRows"
+              [class.active]="isSelectedChartRow(row)"
+            >
+              <td>{{ row.mm | number:'1.1-2' }} mm</td>
+              <td>
+                <button type="button" class="table-pick" (click)="pickCarat(row.carat)">
+                  {{ row.carat | number:'1.2-2' }} ct
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chart-foot">Tap a carat weight to preview on the hand.</p>
+    </aside>
+
+    <div class="preview-panel">
+      <div class="preview-head">
+        <div class="live-size">
+          <span class="live-mm">{{ mm | number:'1.1-1' }} mm</span>
+          <span class="live-ct">{{ size | number:'1.2-2' }} ct</span>
+        </div>
+        <p class="live-label">Selected round brilliant</p>
+      </div>
+
+      <div class="hand-stage">
+        <div
+          class="hand-container"
+          [style.width.px]="handDisplayWidthPx > 0 ? handDisplayWidthPx : null"
+        >
+          <img
+            #handImage
+            src="assets/images/hand.png"
+            class="hand"
+            alt="Hand reference for diamond size"
+            (load)="onHandImageLoad()"
+          />
+          <div
+            class="diamond-mount"
+            [class.diamond-mount--oval]="shape === 'oval'"
+            [class.diamond-mount--square]="shape === 'square'"
+            [style.top.%]="ringTopPercent"
+            [style.left.%]="ringLeftPercent"
+            [style.width.px]="diamondWidthPx"
+            [style.height.px]="diamondHeightPx"
+          >
+            <img [src]="diamondSrc" class="diamond-art" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-bar">
+        <div class="slider-block">
+          <label class="slider-label" for="carat-slider">Carat weight</label>
+          <input
+            id="carat-slider"
+            type="range"
+            [min]="minCarat"
+            max="5"
+            step="0.01"
+            [(ngModel)]="size"
+            (input)="updateSize()"
+            class="slider"
+          />
+        </div>
+        <div class="shape-selector">
+          <span class="shape-label">Shape</span>
+          <div class="shape-buttons">
+            <button
+              type="button"
+              *ngFor="let s of shapes"
+              [class.active]="shape === s"
+              (click)="setShape(s)"
+            >
+              {{ s }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- SLIDER -->
-  <input
-    type="range"
-    min="0.2"
-    max="5"
-    step="0.1"
-    [(ngModel)]="size"
-    (input)="updateSize()"
-    class="slider"
-  />
+  <!-- Weight & size reference strip (true scale when calibrated) -->
+  <section class="weight-size-panel" *ngIf="step === 'try-on' && isCalibrated()">
+    <div class="weight-size-panel__head">
+      <h2>Diamond weight and size</h2>
+      <p>True diameter on your screen after card calibration</p>
+    </div>
+    <div class="gem-grid">
+      <button
+        type="button"
+        class="gem-cell"
+        *ngFor="let ct of compareCarats"
+        [class.active]="isSelectedCarat(ct)"
+        (click)="pickCarat(ct)"
+      >
+        <span
+          class="gem-disc"
+          [style.width.px]="diameterPxForCarat(ct)"
+          [style.height.px]="diameterPxForCarat(ct)"
+        >
+          <img src="assets/images/diamond-round.png" alt="" />
+        </span>
+        <span class="gem-ct">{{ ct | number:'1.1-1' }} Ct</span>
+        <span class="gem-mm">{{ mmForCarat(ct) | number:'1.1-1' }} mm</span>
+      </button>
+    </div>
+  </section>
 
-  <!-- SHAPE SELECT -->
-  <div class="shape-selector">
-    <button
-      *ngFor="let s of shapes"
-      [class.active]="shape === s"
-      (click)="setShape(s)"
-    >
-      {{ s }}
-    </button>
-  </div>
-
+  <p class="disclaimer" *ngIf="step === 'try-on'">
+    Round brilliant reference only. Fancy shapes and cut quality change face-up size. For final selection, visit Nizam Jewellers or enquire on WhatsApp.
+  </p>
 </section>

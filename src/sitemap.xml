@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://nizamjewellers.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/products</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/contact</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/custom-design</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/try-diamond</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/ring-classic</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/ring-halo</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/bracelet-tennis</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/bracelet-cuff</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/locket-heart</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/locket-oval</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/bangle-traditional</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/bangle-diamond</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/chain-minimal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nizamjewellers.vercel.app/product/chain-statement</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>

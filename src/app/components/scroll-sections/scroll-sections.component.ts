@@ -1,30 +1,36 @@
-import { CommonModule } from '@angular/common';
-import { Component, ElementRef, AfterViewInit } from '@angular/core';
-declare var bootstrap: any;
+import { Component, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-scroll-sections',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './scroll-sections.component.html'
+  imports: [RouterLink],
+  templateUrl: './scroll-sections.component.html',
+  styleUrls: ['./scroll-sections.component.scss'],
 })
-export class ScrollSectionsComponent implements AfterViewInit {
+export class ScrollSectionsComponent implements AfterViewInit, OnDestroy {
+  private observer?: IntersectionObserver;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef<HTMLElement>) {}
 
-  ngAfterViewInit() {
-    const sections = this.el.nativeElement.querySelectorAll('.fade-section');
+  ngAfterViewInit(): void {
+    const blocks = this.el.nativeElement.querySelectorAll('.story-block');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+    );
 
-    sections.forEach((section: any) => observer.observe(section));
+    blocks.forEach((block) => this.observer?.observe(block));
   }
 
-  
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
+  }
 }

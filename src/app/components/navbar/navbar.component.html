@@ -26,12 +26,18 @@
          DESKTOP NAVIGATION
     ========================== -->
     <div
-      class="hidden md:flex items-center gap-10 ml-auto">
+      class="hidden lg:flex items-center flex-wrap justify-end gap-x-6 gap-y-2 ml-auto max-w-[52rem]">
 
       <a
         routerLink="/"
         class="nav-link">
         Home
+      </a>
+
+      <a
+        routerLink="/products"
+        class="nav-link">
+        Products
       </a>
 
       <a
@@ -42,8 +48,9 @@
 
       <a
         routerLink="/try-diamond"
-        class="nav-link">
-        Try Diamond
+        class="nav-link nav-link--highlight"
+        title="Card calibration — true diamond size on screen">
+        Diamond size
       </a>
 
       <a
@@ -59,7 +66,7 @@
       </a>
 
       <a
-        href="#contact"
+        routerLink="/contact"
         class="nav-link">
         Contact
       </a>
@@ -72,7 +79,7 @@
     ========================== -->
     <button
       type="button"
-      class="md:hidden text-white text-3xl leading-none"
+      class="lg:hidden text-white text-3xl leading-none"
       (click)="toggleMobileMenu()"
       aria-label="Toggle navigation menu">
 
@@ -89,7 +96,7 @@
   ========================== -->
   <div
     *ngIf="mobileMenuOpen"
-    class="md:hidden bg-[#0A192F]/98 backdrop-blur-md border-t border-white/10">
+    class="lg:hidden bg-[#0A192F]/98 backdrop-blur-md border-t border-white/10">
 
     <div
       class="px-6 py-5 flex flex-col gap-1">
@@ -101,6 +108,16 @@
            (click)="closeMobileMenu()"
            class="mobile-link">
            Home
+         </a>
+       </div>
+
+      <!-- PRODUCTS -->
+       <div class="p-2 border-bottom">
+         <a
+           routerLink="/products"
+           (click)="closeMobileMenu()"
+           class="mobile-link">
+           Products
          </a>
        </div>
 
@@ -120,7 +137,7 @@
            routerLink="/try-diamond"
            (click)="closeMobileMenu()"
            class="mobile-link">
-           Try Diamond
+           Diamond size
          </a>
        </div>
 
@@ -147,7 +164,7 @@
       <!-- CONTACT -->
               <div class="p-2 border-bottom">
                 <a
-                  href="#contact"
+                  routerLink="/contact"
                   (click)="closeMobileMenu()"
                   class="mobile-link">
                   Contact

@@ -1,10 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-// @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&family=Alex+Brush&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap');
 
 @font-face {
   font-family: 'Motterdam';
@@ -12,20 +10,158 @@
   font-weight: normal;
   font-style: normal;
 }
-body {
- background: #0A192F;
-  color: #E6F1FF;
-  // font-family: 'Poppins', sans-serif;
-  padding-top: 90px; // match your navbar height
 
+/* ================================
+   TYPE SCALE (site-wide)
+================================ */
+
+:root {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-brand: 'Motterdam', cursive;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: clamp(1.625rem, 2.8vw, 2rem);
+  --text-page-title: clamp(1.75rem, 3.5vw, 2.5rem);
+  --text-hero: clamp(2.25rem, 7vw, 3.75rem);
+
+  --leading-tight: 1.15;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  --color-text: #e6f1ff;
+  --color-text-muted: rgba(230, 241, 255, 0.72);
+  --color-text-subtle: rgba(230, 241, 255, 0.55);
+  --color-gold: #d4af37;
+  --color-gold-soft: #c6a15b;
 }
 
-.NizamJw{
-  // font-family: "Great Vibes", cursive;
-  font-family: 'Motterdam';
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding-top: 90px;
+  background: #071a2f;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+a {
+  cursor: pointer;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  color: inherit;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+h4 {
+  font-size: var(--text-lg);
+}
+
+p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+}
+
+/* Brand script (logo / major titles) */
+.NizamJw {
+  font-family: var(--font-brand);
   font-weight: 400;
   font-style: normal;
+  line-height: var(--leading-tight);
 }
+
+/* Reusable type roles */
+.type-eyebrow {
+  margin: 0;
+  color: var(--color-gold-soft);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.type-lead {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+}
+
+.type-page-title {
+  margin: 0;
+  font-family: var(--font-brand);
+  font-size: var(--text-page-title);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  color: var(--color-gold);
+}
+
+.type-section-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+}
+
+.type-body-sm {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+.type-caption {
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  color: var(--color-text-subtle);
+}
+
+.text-hero {
+  font-size: var(--text-hero);
+  line-height: 1.05;
+}
+
 .fade-section {
   opacity: 0;
   transform: translateY(80px);
@@ -35,106 +171,4 @@ body {
 .fade-section.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-a{
-  cursor: pointer;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-}
-
-/* Headings */
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-}
-
-/* Logo */
-.logo {
-  // font-family: 'Alex Brush', cursive;
-}
-
-/* ================================
-   GLOBAL TYPOGRAPHY
-================================ */
-
-html {
-  font-size: 16px;
-}
-
-body {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-
-/* ================================
-   HEADINGS
-================================ */
-
-h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.1;
-}
-
-h2 {
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  line-height: 1.2;
-}
-
-h3 {
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  line-height: 1.25;
-}
-
-h4 {
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
-}
-
-h5 {
-  font-size: 1.1rem;
-}
-
-h6 {
-  font-size: 1rem;
-}
-
-
-/* ================================
-   PARAGRAPHS
-================================ */
-
-p {
-  font-size: clamp(0.875rem, 1.2vw, 1rem);
-  line-height: 1.7;
-}
-
-
-/* ================================
-   LINKS
-================================ */
-
-a {
-  font-size: 0.9375rem;
-}
-
-
-/* ================================
-   BUTTONS
-================================ */
-
-button {
-  font-size: 0.875rem;
-}
-
-
-/* ================================
-   INPUTS
-================================ */
-
-input,
-select,
-textarea {
-  font-size: 0.875rem;
 }

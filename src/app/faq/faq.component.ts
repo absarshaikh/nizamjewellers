@@ -138,7 +138,7 @@ export class FaqComponent {
       category: 'Orders',
       question: 'How can I contact Nizam Jewellers?',
       answer:
-        'You can contact us through the contact details provided on our website. For product enquiries, please mention the product or design you are interested in so our team can assist you efficiently.'
+        'Use the Contact page on our website to send a message, or reach us by phone and WhatsApp. For product enquiries, mention the design or product name so we can help you faster.'
     }
   ];
 
